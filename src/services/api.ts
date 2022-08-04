@@ -24,8 +24,10 @@ export function setupAPIClient(ctx: GetServerSidePropsContext | undefined = unde
       if (error.response.data?.code === 'token.expired') {
         cookies = parseCookies(ctx)
   
-        const {'nextauth.refreshToken': refreshToken } = cookies
+        const {'nextauth.refreshToken': refreshToken} = cookies
         const originalConfig = error.config
+
+        console.log(cookies)
   
         if (!isRefreshing) {
           isRefreshing = true
